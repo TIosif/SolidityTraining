@@ -1,0 +1,18 @@
+//SPDX-License-Identifier: MIT
+
+pragma solidity 0.8.15;
+
+contract fivefiveDepositWithdraw {
+
+    uint public balanceReceived;
+
+    function deposit() payable public {
+        balanceReceived += msg.value;
+    }
+
+    function veziBalanta () public view returns (uint) {
+        return address(this).balance;
+        }
+
+        
+}

@@ -1,0 +1,25 @@
+//SPDX-License-Identifier: MIT
+
+pragma solidity 0.8.15;
+
+contract SendMoney {
+
+    uint public balanceReceived;
+    function deposit () public payable {
+            balanceReceived += msg.value;
+    }
+
+    function getContractBalance () public view returns(uint) {
+        return address(this).balance;
+    }
+
+    function withdrawToAddress (address payable to) public {
+        to.transfer(getContractBalance());
+    }
+
+
+    function sendTo(address payable to_s, uint amount) public payable {
+        require (amount <= address(this).balance, "Not enougth funds.");
+        to_s.transfer(amount);
+        }
+}

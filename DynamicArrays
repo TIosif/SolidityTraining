@@ -1,0 +1,41 @@
+//SPDX-License-Identifier: GPL-3.0
+ 
+pragma solidity >=0.5.0 <0.9.0;
+
+contract DynamicArrays {
+
+    // dynamic array of type uint
+    uint[] public numbers;
+
+    // returning length
+    function measureLength() view public returns(uint){
+        return numbers.length;
+    } 
+
+// appending a new element
+    function addElement(uint item) public {
+        numbers.push(item);
+    }
+
+// returning an element at an index
+    function inspectPosition (uint i) public view returns(uint){
+        if (i < numbers.length) {
+            return numbers[i];
+        }
+        return 0;
+    }
+
+// removing the last element of the array
+    function cutLastElement() public {
+        numbers.pop();
+    }
+
+// declaring a memory dynamic array
+    function fm() public {
+        uint[] memory y = new uint[](3);
+        y[0] = 3;
+        y[1] = 5;
+        y[2] = 99;
+       numbers = y;
+    }
+}

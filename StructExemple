@@ -1,0 +1,35 @@
+//SPDX-License-Identifier: GPL-3.0
+ 
+pragma solidity >=0.5.0 <0.9.0;
+ 
+// declaring a struct type outsite of a contract
+
+struct hotel{
+    string name;
+    uint capacity;
+    uint8 priceInETH;
+}
+
+contract Hotels {
+    // declaring a state variabla of type Instructor
+    hotel public RomanianHotel;
+
+    // initializing the struct in the constructor
+    constructor(string memory _name, uint _capacity, uint8 _priceInETH) public {
+        RomanianHotel.name = _name;
+        RomanianHotel.capacity = _capacity;
+        RomanianHotel.priceInETH = _priceInETH;
+    }
+
+    // changing a struct state variable
+    function modifyHotel (string memory _name, uint _capacity, uint8 _priceInETH) public{
+        hotel memory otherHotel = hotel({
+            name: _name,
+            capacity: _capacity,
+            priceInETH: _priceInETH
+        });
+        RomanianHotel = otherHotel;
+    }
+
+
+}
